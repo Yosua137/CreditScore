@@ -1,1 +1,0 @@
-Remove credit_model.pkl
