@@ -1,19 +1,3 @@
-"""
-Streamlit UI for the Credit Score classifier — hosted on EC2, calls the
-SageMaker endpoint via boto3 (same UI/UX as the local app.py, only the
-prediction backend changed: local joblib.load() -> remote invoke_endpoint()).
-
-Reads endpoint name + region from environment variables, set by
-ec2/user-data.sh's systemd service. boto3 picks up AWS credentials from:
-  - the EC2 instance profile (LabInstanceProfile), when running on EC2, OR
-  - ~/.aws/credentials, when running locally for testing.
-
-Deliberately has NO dependency on scikit-learn/xgboost/joblib — the model
-and its preprocessing both live inside the SageMaker endpoint, so this
-host only ever needs `streamlit` + `boto3` (same as ec2/user-data.sh
-installs).
-"""
-
 import json
 import os
 
